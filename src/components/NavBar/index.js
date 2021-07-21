@@ -24,13 +24,21 @@ function NavBar() {
       <Toolbar className={classes.toolbar}>
         <img
           onClick={() => history.push('/produtos')}
-          className={classes.iconeHome}
+          className={
+            location.pathname.includes('produtos')
+              ? classes.iconeHome
+              : classes.icone
+          }
           src={location.pathname.includes('produtos') ? storeSelected : store}
           alt='Produtos'
         />
         <img
           onClick={() => history.push('/perfil')}
-          className={classes.icone}
+          className={
+            location.pathname.includes('perfil')
+              ? classes.iconeHome
+              : classes.icone
+          }
           src={location.pathname.includes('perfil') ? profileSelected : profile}
           alt='Perfil'
         />
