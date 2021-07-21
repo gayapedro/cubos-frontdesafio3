@@ -10,9 +10,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Store from '../../assets/store-selected.svg';
-import User from '../../assets/user.svg';
-import Close from '../../assets/close.svg';
 import useStyles from './style';
 import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
@@ -50,7 +47,7 @@ function EditarProduto() {
     setError(false);
     try {
       const response = await fetch(
-        `http://cubosdesafio3.herokuapp.com/produtos/${id}`,
+        `http://apides3.gayapedro.dev.br/produtos/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -79,14 +76,11 @@ function EditarProduto() {
     setErrorMessage('');
     setError(false);
     try {
-      const response = await fetch(
-        'http://cubosdesafio3.herokuapp.com/perfil',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch('http://apides3.gayapedro.dev.br/perfil', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao buscar informações do usuário.');
@@ -117,7 +111,7 @@ function EditarProduto() {
     };
     try {
       const response = await fetch(
-        `http://cubosdesafio3.herokuapp.com/produtos/${id}`,
+        `http://apides3.gayapedro.dev.br/produtos/${id}`,
         {
           method: 'PUT',
           headers: {
@@ -160,19 +154,19 @@ function EditarProduto() {
           <img
             onClick={() => history.push('/produtos')}
             className={classes.iconeHome}
-            src={Store}
+            src={process.env.PUBLIC_URL + '/store-selected.svg'}
             alt='Produtos'
           />
           <img
             onClick={() => history.push('/perfil')}
             className={classes.icone}
-            src={User}
+            src={process.env.PUBLIC_URL + '/user.svg'}
             alt='Perfil'
           />
           <img
             onClick={handleLogout}
             className={classes.icone}
-            src={Close}
+            src={process.env.PUBLIC_URL + '/close.svg'}
             alt='Logout'
           />
         </Toolbar>

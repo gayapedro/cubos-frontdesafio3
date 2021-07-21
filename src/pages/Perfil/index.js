@@ -9,9 +9,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Store from '../../assets/store.svg';
-import User from '../../assets/user-selected.svg';
-import Close from '../../assets/close.svg';
 import useStyles from './style';
 import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
@@ -41,14 +38,11 @@ function Perfil() {
     setErrorMessage('');
     setError(false);
     try {
-      const response = await fetch(
-        'http://cubosdesafio3.herokuapp.com/perfil',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch('http://apides3.gayapedro.dev.br/perfil', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao buscar informações sobre o usuário.');
@@ -79,19 +73,19 @@ function Perfil() {
           <img
             onClick={() => history.push('/produtos')}
             className={classes.icone}
-            src={Store}
+            src={process.env.PUBLIC_URL + '/store.svg'}
             alt='Produtos'
           />
           <img
             onClick={() => history.push('/perfil')}
             className={classes.iconeHome}
-            src={User}
+            src={process.env.PUBLIC_URL + '/user-selected.svg'}
             alt='Perfil'
           />
           <img
             onClick={handleLogout}
             className={classes.icone}
-            src={Close}
+            src={process.env.PUBLIC_URL + '/close.svg'}
             alt='Logout'
           />
         </Toolbar>

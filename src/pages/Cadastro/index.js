@@ -71,16 +71,13 @@ function Cadastro() {
       return;
     }
     try {
-      const response = await fetch(
-        'http://cubosdesafio3.herokuapp.com/cadastro',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const response = await fetch('http://apides3.gayapedro.dev.br/cadastro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
       if (!response.ok) {
         setErrorMessage('Todos os campos são necessários.');
         setError(true);

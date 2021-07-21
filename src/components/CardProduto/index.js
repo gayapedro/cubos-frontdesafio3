@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import DeleteIcon from '../../assets/delete.svg';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -33,7 +32,7 @@ function CardProduto(props) {
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `http://cubosdesafio3.herokuapp.com/produtos/${props.id}`,
+        `http://apides3.gayapedro.dev.br/produtos/${props.id}`,
         {
           method: 'DELETE',
           headers: {
@@ -71,7 +70,7 @@ function CardProduto(props) {
       <img
         onClick={handleClickOpen}
         className={classes.delete}
-        src={DeleteIcon}
+        src={process.env.PUBLIC_URL + '/delete.svg'}
         alt=''
       />
       <CardContent>

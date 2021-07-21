@@ -9,9 +9,6 @@ import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
 import TextField from '@material-ui/core/TextField';
-import Store from '../../assets/store-selected.svg';
-import User from '../../assets/user.svg';
-import Close from '../../assets/close.svg';
 import useStyles from './style';
 import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
@@ -36,14 +33,11 @@ function Produtos() {
     setError(false);
     setErrorMessage('');
     try {
-      const response = await fetch(
-        'http://cubosdesafio3.herokuapp.com/produtos',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch('http://apides3.gayapedro.dev.br/produtos', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao buscar produtos.');
@@ -64,14 +58,11 @@ function Produtos() {
     setError(false);
     setErrorMessage('');
     try {
-      const response = await fetch(
-        'http://cubosdesafio3.herokuapp.com/perfil',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await fetch('http://apides3.gayapedro.dev.br/perfil', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao buscar informações do usuário.');
@@ -92,7 +83,7 @@ function Produtos() {
     setLoading(true);
     setError(false);
     setErrorMessage('');
-    let endereco = 'http://cubosdesafio3.herokuapp.com/produtos?';
+    let endereco = 'http://apides3.gayapedro.dev.br/produtos?';
     if (data.inicial) {
       endereco += `min=${data.inicial * 100}&`;
     }
@@ -151,17 +142,21 @@ function Produtos() {
     <React.Fragment>
       <AppBar className={classes.navbar}>
         <Toolbar className={classes.toolbar}>
-          <img className={classes.iconeHome} src={Store} alt='Produtos' />
+          <img
+            className={classes.iconeHome}
+            src={process.env.PUBLIC_URL + '/store-selected.svg'}
+            alt='Produtos'
+          />
           <img
             onClick={() => history.push('/perfil')}
             className={classes.icone}
-            src={User}
+            src={process.env.PUBLIC_URL + '/user.svg'}
             alt='Perfil'
           />
           <img
             onClick={handleLogout}
             className={classes.icone}
-            src={Close}
+            src={process.env.PUBLIC_URL + '/close.svg'}
             alt='Logout'
           />
         </Toolbar>

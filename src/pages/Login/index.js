@@ -55,7 +55,7 @@ function Login() {
     setError(false);
     setErrorMessage('');
     try {
-      const response = await fetch('http://cubosdesafio3.herokuapp.com/login', {
+      const response = await fetch('http://apides3.gayapedro.dev.br/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
