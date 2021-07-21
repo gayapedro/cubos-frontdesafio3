@@ -1,8 +1,6 @@
 import useAuth from '../../hooks/useAuth';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
@@ -15,9 +13,7 @@ import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import store from '../../assets/store-selected.svg';
-import profile from '../../assets/user.svg';
-import close from '../../assets/close.svg';
+import NavBar from '../../components/NavBar';
 
 function AdicionarProduto() {
   const classes = useStyles();
@@ -25,7 +21,7 @@ function AdicionarProduto() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const { token, deslogar } = useAuth();
+  const { token } = useAuth();
   const { register, handleSubmit } = useForm();
   const history = useHistory();
 
@@ -108,38 +104,13 @@ function AdicionarProduto() {
     setLoading(false);
   };
 
-  const handleLogout = () => {
-    deslogar();
-  };
-
   useEffect(() => {
     fetchUserInfo();
   }, []);
 
   return (
     <React.Fragment>
-      <AppBar className={classes.navbar}>
-        <Toolbar className={classes.toolbar}>
-          <img
-            onClick={() => history.push('/produtos')}
-            className={classes.iconeHome}
-            src={store}
-            alt='Produtos'
-          />
-          <img
-            onClick={() => history.push('/perfil')}
-            className={classes.icone}
-            src={profile}
-            alt='Perfil'
-          />
-          <img
-            onClick={handleLogout}
-            className={classes.icone}
-            src={close}
-            alt='Logout'
-          />
-        </Toolbar>
-      </AppBar>
+      <NavBar />
       <main className={classes.main}>
         <div className={classes.text}>
           <Typography variant='h3'>{nomeLoja}</Typography>

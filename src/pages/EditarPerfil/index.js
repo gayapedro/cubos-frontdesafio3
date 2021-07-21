@@ -1,8 +1,6 @@
 import useAuth from '../../hooks/useAuth';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
@@ -21,9 +19,7 @@ import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import store from '../../assets/store.svg';
-import profile from '../../assets/user-selected.svg';
-import close from '../../assets/close.svg';
+import NavBar from '../../components/NavBar';
 
 function EditarPerfil() {
   const classes = useStyles();
@@ -33,7 +29,7 @@ function EditarPerfil() {
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
-  const { token, deslogar } = useAuth();
+  const { token } = useAuth();
   const { register, handleSubmit } = useForm();
   const history = useHistory();
 
@@ -120,38 +116,13 @@ function EditarPerfil() {
     setLoading(false);
   };
 
-  const handleLogout = () => {
-    deslogar();
-  };
-
   useEffect(() => {
     fetchUserInfo();
   }, []);
 
   return (
     <React.Fragment>
-      <AppBar className={classes.navbar}>
-        <Toolbar className={classes.toolbar}>
-          <img
-            onClick={() => history.push('/produtos')}
-            className={classes.icone}
-            src={store}
-            alt='Produtos'
-          />
-          <img
-            onClick={() => history.push('/perfil')}
-            className={classes.iconeHome}
-            src={profile}
-            alt='Perfil'
-          />
-          <img
-            onClick={handleLogout}
-            className={classes.icone}
-            src={close}
-            alt='Logout'
-          />
-        </Toolbar>
-      </AppBar>
+      <NavBar />
       <main className={classes.main}>
         <div className={classes.text}>
           <Typography variant='h3'>{user.nome_loja}</Typography>

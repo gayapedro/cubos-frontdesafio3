@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom';
 import React from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Backdrop from '@material-ui/core/Backdrop';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -14,9 +12,7 @@ import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import CardProduto from '../../components/CardProduto';
-import store from '../../assets/store-selected.svg';
-import profile from '../../assets/user.svg';
-import close from '../../assets/close.svg';
+import NavBar from '../../components/NavBar';
 
 function Produtos() {
   const classes = useStyles();
@@ -27,7 +23,7 @@ function Produtos() {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [openFilter, setOpenFilter] = useState(false);
-  const { token, deslogar } = useAuth();
+  const { token } = useAuth();
   const { register, handleSubmit } = useForm();
   const history = useHistory();
 
@@ -120,10 +116,6 @@ function Produtos() {
     setLoading(false);
   };
 
-  const handleLogout = () => {
-    deslogar();
-  };
-
   const handleCleanFilter = () => {
     setToggle(!toggle);
     setOpenFilter(false);
@@ -149,23 +141,7 @@ function Produtos() {
 
   return (
     <React.Fragment>
-      <AppBar className={classes.navbar}>
-        <Toolbar className={classes.toolbar}>
-          <img className={classes.iconeHome} src={store} alt='Produtos' />
-          <img
-            onClick={() => history.push('/perfil')}
-            className={classes.icone}
-            src={profile}
-            alt='Perfil'
-          />
-          <img
-            onClick={handleLogout}
-            className={classes.icone}
-            src={close}
-            alt='Logout'
-          />
-        </Toolbar>
-      </AppBar>
+      <NavBar />
       <main className={classes.main}>
         <div className={classes.text}>
           <div className={classes.container}>
