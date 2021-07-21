@@ -47,7 +47,7 @@ function EditarProduto() {
     setError(false);
     try {
       const response = await fetch(
-        `http://apides3.gayapedro.dev.br/produtos/${id}`,
+        `https://cubosdesafio3.herokuapp.com/produtos/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,11 +76,14 @@ function EditarProduto() {
     setErrorMessage('');
     setError(false);
     try {
-      const response = await fetch('http://apides3.gayapedro.dev.br/perfil', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        'https://cubosdesafio3.herokuapp.com/perfil',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao buscar informações do usuário.');
@@ -111,7 +114,7 @@ function EditarProduto() {
     };
     try {
       const response = await fetch(
-        `http://apides3.gayapedro.dev.br/produtos/${id}`,
+        `https://cubosdesafio3.herokuapp.com/produtos/${id}`,
         {
           method: 'PUT',
           headers: {

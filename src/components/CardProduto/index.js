@@ -32,7 +32,7 @@ function CardProduto(props) {
   const handleDelete = async () => {
     try {
       const response = await fetch(
-        `http://apides3.gayapedro.dev.br/produtos/${props.id}`,
+        `https://cubosdesafio3.herokuapp.com/produtos/${props.id}`,
         {
           method: 'DELETE',
           headers: {

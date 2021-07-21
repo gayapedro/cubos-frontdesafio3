@@ -64,11 +64,14 @@ function EditarPerfil() {
     setErrorMessage('');
     setError(false);
     try {
-      const response = await fetch('http://apides3.gayapedro.dev.br/perfil', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        'https://cubosdesafio3.herokuapp.com/perfil',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao buscar informações do usuário.');
@@ -89,14 +92,17 @@ function EditarPerfil() {
     setErrorMessage('');
     setError(false);
     try {
-      const response = await fetch('http://apides3.gayapedro.dev.br/perfil', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        'https://cubosdesafio3.herokuapp.com/perfil',
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao editar perfil.');

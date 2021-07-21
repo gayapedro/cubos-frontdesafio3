@@ -55,13 +55,16 @@ function Login() {
     setError(false);
     setErrorMessage('');
     try {
-      const response = await fetch('http://apides3.gayapedro.dev.br/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        'https://cubosdesafio3.herokuapp.com/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        }
+      );
       if (!response.ok) {
         setErrorMessage('E-mail ou senha incorretos.');
         setError(true);
