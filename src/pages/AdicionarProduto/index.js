@@ -15,6 +15,9 @@ import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import store from '../../assets/store-selected.svg';
+import profile from '../../assets/user.svg';
+import close from '../../assets/close.svg';
 
 function AdicionarProduto() {
   const classes = useStyles();
@@ -89,6 +92,8 @@ function AdicionarProduto() {
           body: JSON.stringify(objetoProduto),
         }
       );
+      const dados = await response.json();
+      console.log(dados);
       if (!response.ok) {
         setLoading(false);
         setErrorMessage('Erro ao adicionar produto.');
@@ -118,19 +123,19 @@ function AdicionarProduto() {
           <img
             onClick={() => history.push('/produtos')}
             className={classes.iconeHome}
-            src={process.env.PUBLIC_URL + '/store-selected.svg'}
+            src={store}
             alt='Produtos'
           />
           <img
             onClick={() => history.push('/perfil')}
             className={classes.icone}
-            src={process.env.PUBLIC_URL + '/user.svg'}
+            src={profile}
             alt='Perfil'
           />
           <img
             onClick={handleLogout}
             className={classes.icone}
-            src={process.env.PUBLIC_URL + '/close.svg'}
+            src={close}
             alt='Logout'
           />
         </Toolbar>

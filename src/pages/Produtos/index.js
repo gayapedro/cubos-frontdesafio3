@@ -14,6 +14,9 @@ import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import CardProduto from '../../components/CardProduto';
+import store from '../../assets/store-selected.svg';
+import profile from '../../assets/user.svg';
+import close from '../../assets/close.svg';
 
 function Produtos() {
   const classes = useStyles();
@@ -148,21 +151,17 @@ function Produtos() {
     <React.Fragment>
       <AppBar className={classes.navbar}>
         <Toolbar className={classes.toolbar}>
-          <img
-            className={classes.iconeHome}
-            src={process.env.PUBLIC_URL + '/store-selected.svg'}
-            alt='Produtos'
-          />
+          <img className={classes.iconeHome} src={store} alt='Produtos' />
           <img
             onClick={() => history.push('/perfil')}
             className={classes.icone}
-            src={process.env.PUBLIC_URL + '/user.svg'}
+            src={profile}
             alt='Perfil'
           />
           <img
             onClick={handleLogout}
             className={classes.icone}
-            src={process.env.PUBLIC_URL + '/close.svg'}
+            src={close}
             alt='Logout'
           />
         </Toolbar>

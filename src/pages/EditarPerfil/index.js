@@ -21,6 +21,9 @@ import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import store from '../../assets/store.svg';
+import profile from '../../assets/user-selected.svg';
+import close from '../../assets/close.svg';
 
 function EditarPerfil() {
   const classes = useStyles();
@@ -132,19 +135,19 @@ function EditarPerfil() {
           <img
             onClick={() => history.push('/produtos')}
             className={classes.icone}
-            src={process.env.PUBLIC_URL + '/store.svg'}
+            src={store}
             alt='Produtos'
           />
           <img
             onClick={() => history.push('/perfil')}
             className={classes.iconeHome}
-            src={process.env.PUBLIC_URL + '/user-selected.svg'}
+            src={profile}
             alt='Perfil'
           />
           <img
             onClick={handleLogout}
             className={classes.icone}
-            src={process.env.PUBLIC_URL + '/close.svg'}
+            src={close}
             alt='Logout'
           />
         </Toolbar>
