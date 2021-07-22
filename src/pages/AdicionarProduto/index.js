@@ -67,7 +67,7 @@ function AdicionarProduto() {
     setLoading(true);
     setErrorMessage('');
     setError(false);
-    const precoFormat = Number(data.preco).toFixed(2) * 100;
+    const precoFormat = (data.preco * 100).toFixed(0);
     const quantidadeFormat = Number(data.estoque);
     const objetoProduto = {
       nome: data.nome,

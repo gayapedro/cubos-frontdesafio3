@@ -102,14 +102,16 @@ function EditarProduto() {
     setLoading(true);
     setErrorMessage('');
     setError(false);
-    const precoFormat = Number(data.preco).toFixed(2) * 100;
-    const quantidadeFormat = Number(data.estoque);
+    let precoFormat = (data.preco * 100).toFixed(0);
+    let quantidadeFormat = Number(data.estoque);
+    if (isNaN(precoFormat)) precoFormat = (produto.preco * 100).toFixed(0);
+    if (isNaN(quantidadeFormat)) quantidadeFormat = produto.estoque;
     const objetoProduto = {
-      nome: data.nome,
+      nome: data.nome ?? produto.nome,
       estoque: quantidadeFormat,
       preco: precoFormat,
-      descricao: data.descricao,
-      imagem: data.imagem,
+      descricao: data.descricao ?? produto.descricao,
+      imagem: data.imagem ?? produto.imagem,
     };
     try {
       const response = await fetch(
