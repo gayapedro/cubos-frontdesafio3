@@ -3,11 +3,6 @@ import { AppBar, Toolbar } from '@material-ui/core';
 import React from 'react';
 import useStyles from './style';
 import { useHistory, useLocation } from 'react-router-dom';
-import store from '../../assets/store.svg';
-import profile from '../../assets/user.svg';
-import storeSelected from '../../assets/store-selected.svg';
-import profileSelected from '../../assets/user-selected.svg';
-import close from '../../assets/close.svg';
 
 function NavBar() {
   const history = useHistory();
@@ -29,7 +24,11 @@ function NavBar() {
               ? classes.iconeHome
               : classes.icone
           }
-          src={location.pathname.includes('produtos') ? storeSelected : store}
+          src={
+            location.pathname.includes('produtos')
+              ? `${process.env.PUBLIC_URL}/assets/storeselected.svg`
+              : `${process.env.PUBLIC_URL}/assets/store.svg`
+          }
           alt='Produtos'
         />
         <img
@@ -39,13 +38,17 @@ function NavBar() {
               ? classes.iconeHome
               : classes.icone
           }
-          src={location.pathname.includes('perfil') ? profileSelected : profile}
+          src={
+            location.pathname.includes('perfil')
+              ? `${process.env.PUBLIC_URL}/assets/userselected.svg`
+              : `${process.env.PUBLIC_URL}/assets/user.svg`
+          }
           alt='Perfil'
         />
         <img
           onClick={handleLogout}
           className={classes.icone}
-          src={close}
+          src={`${process.env.PUBLIC_URL}/assets/close.svg`}
           alt='Logout'
         />
       </Toolbar>

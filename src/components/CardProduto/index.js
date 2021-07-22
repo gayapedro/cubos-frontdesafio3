@@ -13,7 +13,6 @@ import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import useStyles from './style';
 import useAuth from '../../hooks/useAuth';
-import close from '../../assets/delete.svg';
 
 function CardProduto(props) {
   const [open, setOpen] = useState(false);
@@ -71,7 +70,7 @@ function CardProduto(props) {
       <img
         onClick={handleClickOpen}
         className={classes.delete}
-        src={close}
+        src={`${process.env.PUBLIC_URL}/assets/delete.svg`}
         alt=''
       />
       <CardContent>
